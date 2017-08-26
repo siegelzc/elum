@@ -1,0 +1,4 @@
+# Exclude folders from inclusion in git push
+
+node_modules/
+node_modules/*
