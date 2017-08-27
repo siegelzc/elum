@@ -1,4 +1,7 @@
 # Exclude folders from inclusion in git push
 
+LICENSE
+README.md
+
 node_modules/
 node_modules/*
