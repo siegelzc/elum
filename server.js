@@ -5,7 +5,7 @@
 // Express
 var express = require('express');
 var app = express();
-var server = app.listen(32439);
+var server = app.listen(8080);
 
 // Socket.io
 var socketio = require('socket.io');

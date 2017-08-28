@@ -112,7 +112,7 @@ var load = {
 function setup(neW) {
 	if (neW != false) {
 		// Sockets
-		socket = io.connect('http://elum.ga:32439');
+		socket = io.connect('http://elum.ga:8080');
 		socket.emit('GalaxyLoaded');
 		socket.on('GalaxyLoaded', function(loadeD) {
 			if (loadeD == false) {
