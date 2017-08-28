@@ -249,7 +249,7 @@ function setup(neW) {
 
 	if (neW != false) {
 		// Loading
-		shipImage = loadImage('./alon/assets/ship.png', ship.loaded = true);
+		shipImage = loadImage('./elum/assets/ship.png', ship.loaded = true);
 		if (ship.loaded != true || galaxy.loaded != true) {
 			state = 'loading';
 			for (i = 0; i < 5; i++) {
