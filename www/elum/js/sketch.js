@@ -112,7 +112,7 @@ var load = {
 function setup(neW) {
 	if (neW != false) {
 		// Sockets
-		socket = io.connect('http://server-elum.1d35.starter-us-east-1.openshiftapps.com:80');
+		socket = io.connect('http://elum-elum.1d35.starter-us-east-1.openshiftapps.com:80');
 		socket.emit('GalaxyLoaded');
 		socket.on('GalaxyLoaded', function(loadeD) {
 			if (loadeD == false) {
