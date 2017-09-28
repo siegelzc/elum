@@ -1,2 +1,2 @@
-# elum
-2D Space RTS
+# Elum
+2D Space RTS Game
