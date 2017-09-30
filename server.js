@@ -3,12 +3,12 @@
 // io.sockets.emit('Saves', saves); // Emit to all clients
 
 // Express
-// var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-// var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 var express = require('express');
 var app = express();
-var server = app.listen(8080);
+var server = app.listen(port, ip);
 
 // Socket.io
 var socketio = require('socket.io');
