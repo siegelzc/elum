@@ -113,7 +113,7 @@ function setup(neW) {
 	if (neW != false) {
 		// Sockets
 		// socket = io.connect('localhost:80'); // Local
-		socket = io.connect('http://server-elum.1d35.starter-us-east-1.openshiftapps.com:80'); // Openshift
+		socket = io.connect('http://http://node-elum.1d35.starter-us-east-1.openshiftapps.com:8080'); // Openshift
 		socket.emit('GalaxyLoaded');
 		socket.on('GalaxyLoaded', function(loadeD) {
 			if (loadeD == false) {
@@ -218,6 +218,7 @@ function setup(neW) {
 	intro(true);
 	function intro(neW) {
 		background(50);
+		drawStars(neW);
 		fill(230);
 		strokeWeight(1);
 		noStroke();
@@ -230,7 +231,6 @@ function setup(neW) {
 		text('Pilot your ship using the arrow keys or \'wasd\'', 30, height - 100);
 		text('Press \'P\' to open the pause menu', 30, height - 70);
 		text('Click the screen to start', 30, height - 40);
-		drawStars(neW);
 		// fill(200);
 		// noStroke();
 		// drawItem(bargeItem, 100, 100);
