@@ -112,12 +112,8 @@ var load = {
 function setup(neW) {
 	if (neW != false) {
 		// Sockets
-<<<<<<< HEAD
-		socket = io.connect('localhost:80'); // Local
-		// socket = io.connect('http://server-elum.1d35.starter-us-east-1.openshiftapps.com:80'); // Openshift
-=======
-		socket = io.connect('http://elum-elum.1d35.starter-us-east-1.openshiftapps.com:80');
->>>>>>> 4e454507b1547767b7d085b4f057397de6599181
+		// socket = io.connect('localhost:80'); // Local
+		socket = io.connect('http://server-elum.1d35.starter-us-east-1.openshiftapps.com:80'); // Openshift
 		socket.emit('GalaxyLoaded');
 		socket.on('GalaxyLoaded', function(loadeD) {
 			if (loadeD == false) {
