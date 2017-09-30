@@ -265,7 +265,65 @@ var labMenu = {
 		diameter: 6
 	}, 
 	text: {
-		left: ['Refining Therodite', 'Refining Oxytrite', 'Refining Ikredein', 'Refining Embryan', 'Refining Odium', 'Refining Sybril'], 
+		left: ['Mining', 'Refining'], 
+		right: [], 
+		empty: 'There are no available upgrades'
+	}
+};
+var labMining = {
+	state: 'labMining', 
+	x: undefined, 
+	y: undefined, 
+	width: 450, 
+	height: undefined, 
+	rows: {
+		start: undefined, 
+		count: undefined, 
+		max: 6
+	}, 
+	cursor: {
+		position: undefined, 
+		x: undefined, 
+		y: undefined, 
+		diameter: 6
+	}, 
+	text: {
+		left: function() {
+			var arraY = [];
+			for (i = 0; i < ores.length; i++) {
+				arraY[i] = ores[i][0].toUpperCase() + ores[i].slice(1);
+			}
+			return arraY;
+		}, 
+		right: [], 
+		empty: 'There are no available upgrades'
+	}
+};
+var labRefining = {
+	state: 'labRefining', 
+	x: undefined, 
+	y: undefined, 
+	width: 450, 
+	height: undefined, 
+	rows: {
+		start: undefined, 
+		count: undefined, 
+		max: 6
+	}, 
+	cursor: {
+		position: undefined, 
+		x: undefined, 
+		y: undefined, 
+		diameter: 6
+	}, 
+	text: {
+		left: function() {
+			var arraY = [];
+			for (i = 0; i < ores.length; i++) {
+				arraY[i] = ores[i][0].toUpperCase() + ores[i].slice(1);
+			}
+			return arraY;
+		}, 
 		right: [], 
 		empty: 'There are no available upgrades'
 	}

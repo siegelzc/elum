@@ -112,7 +112,8 @@ var load = {
 function setup(neW) {
 	if (neW != false) {
 		// Sockets
-		socket = io.connect('http://server-elum.1d35.starter-us-east-1.openshiftapps.com:80');
+		socket = io.connect('localhost:80'); // Local
+		// socket = io.connect('http://server-elum.1d35.starter-us-east-1.openshiftapps.com:80'); // Openshift
 		socket.emit('GalaxyLoaded');
 		socket.on('GalaxyLoaded', function(loadeD) {
 			if (loadeD == false) {
@@ -221,26 +222,14 @@ function setup(neW) {
 		strokeWeight(1);
 		noStroke();
 		textFont('Verdana')
-		textSize(64);
-		text('Stellar Horizon', width / 2 - 240, height / 3);
+		textSize(100);
+		text('Elum', width / 2 - textWidth('Elum') / 2, height / 3);
 		textSize(34);
-		text('Instructions:', 20, height - 290);
+		text('Instructions:', 20, height - 140);
 		textSize(26);
-		text('Pilot your ship using the arrow keys or \'wasd\'', 30, height - 250);
-		text('Fly to a warp gate to warp to a new system', 30, height - 220);
-		text('Fly to a space station to enter, and', 30, height - 190);
-		text('Press \'E\' to interact with it\'s interior', 30, height - 160);
-		text('Fly to a planet to explore it', 30, height - 130);
-		text('Mine for metal ores in an asteroid belt', 30, height - 100);
+		text('Pilot your ship using the arrow keys or \'wasd\'', 30, height - 100);
 		text('Press \'P\' to open the pause menu', 30, height - 70);
 		text('Click the screen to start', 30, height - 40);
-		var resizeText = {};
-		resizeText.string = 'Press F11 to play in fullscreen (recommended)';
-		resizeText.width = textWidth(resizeText.string);
-		text('Press F11 to play in fullscreen (recommended)', width - resizeText.width - 30, height - 130);
-		text('The screen can only be resized in the menu', width - resizeText.width, height -  100);
-		text('Use \'http://stellarhorizon.ga/wallpaper\' with', width - resizeText.width - 30, height - 70);
-		text('wallpaper engine for live wallpaper', width - resizeText.width, height - 40);
 		drawStars(neW);
 		// fill(200);
 		// noStroke();
@@ -252,25 +241,25 @@ function setup(neW) {
 		shipImage = loadImage('./elum/assets/ship.png', ship.loaded = true);
 		if (ship.loaded != true || galaxy.loaded != true) {
 			state = 'loading';
-			for (i = 0; i < 5; i++) {
+			for (i = 0; i < 10; i++) {
 				load.circles[i] = {
-					x: center.x - 50 + 25 * i, 
+					x: center.x - 160 + 40 * i, 
 					y: center.y + 80, 
 					r: undefined, 
 					fill: 255, 
-					offset: 100 * i
+					offset: 160 * i
 				};
 			}
 			clearInterval(load.interval);
-			load.interval = setInterval(loading, 25);
+			load.interval = setInterval(loading, 50);
 		}
 	}
 
 	function loading() {
 		intro(false);
 		for (i = 0; i < load.circles.length; i++) {
-			load.circles[i].x = center.x - 50 + 25 * i;
-			load.circles[i].r = 5 * sin(load.s - load.circles[i].offset);
+			load.circles[i].x = center.x - 180 + 40 * i;
+			load.circles[i].r = 15 * sin(load.s - load.circles[i].offset);
 
 			fill(load.circles[i].fill);
 			noStroke();
@@ -1602,7 +1591,7 @@ function keyPressed() {
 					openInventory('withdraw');
 				}
 			}
-		} else if (state.indexOf('Menu') != -1) {
+		} else if (state.indexOf('Menu') != -1 || state == 'labMining' || state == 'labRefining') {
 			if (menU.cursor.position > 0) {
 				menU.cursor.position--;
 				if (menU.cursor.position < menU.rows.start && menU.rows.start > 0) {
@@ -1634,7 +1623,7 @@ function keyPressed() {
 					openInventory('withdraw');
 				}
 			}
-		} else if (state.indexOf('Menu') != -1) {
+		} else if (state.indexOf('Menu') != -1 || state == 'labMining' || state == 'labRefining') {
 			menU.cursor.position++;
 			if (menU.cursor.position > menU.rows.max - 1  + menU.rows.start && menU.rows.start < menU.rows.count - menU.rows.max) {
 				menU.rows.start++;
@@ -1664,7 +1653,7 @@ function keyPressed() {
 					openInventory('withdraw');
 				}
 			}
-		} else if (state.indexOf('Menu') != -1) {
+		} else if (state.indexOf('Menu') != -1 || state == 'labMining' || state == 'labRefining') {
 			if (menU.cursor.position > 0) {
 				menU.cursor.position--;
 				if (menU.cursor.position < menU.rows.start && menU.rows.start > 0) {
@@ -1696,7 +1685,7 @@ function keyPressed() {
 					openInventory('withdraw');
 				}
 			}
-		} else if (state.indexOf('Menu') != -1) {
+		} else if (state.indexOf('Menu') != -1 || state == 'labMining' || state == 'labRefining') {
 			menU.cursor.position++;
 			if (menU.cursor.position > menU.rows.max - 1  + menU.rows.start && menU.rows.start < menU.rows.count - menU.rows.max) {
 				menU.rows.start++;
@@ -2086,6 +2075,16 @@ function keyPressed() {
 			drawInnerStation();
 			scrollMenu(labMenu, true);
 		} else if (state == 'labMenu') {
+			if (labMenu.text.left[labMenu.cursor.position] == 'Mining') {
+				drawInnerStation();
+				scrollMenu(labMining, true);
+			} else if (labMenu.text.left[labMenu.cursor.position] == 'Refining') {
+				drawInnerStation();
+				scrollMenu(labRefining, true);
+			}
+		} else if (state == 'labMining') {
+
+		} else if (state == 'labRefining') {
 
 		}
 	} else if (keyCode == 82) { // R
@@ -2256,6 +2255,12 @@ function keyPressed() {
 		} else if (state == 'labMenu') {
 			drawInnerStation();
 			flag('lab');
+		} else if (state == 'labMining') {
+			drawInnerStation();
+			scrollMenu(labMenu);
+		} else if (state == 'labRefining') {
+			drawInnerStation();
+			scrollMenu(labMenu);
 		}
 	} else if (keyCode == 122) { // F11
 		if (state == 'intro') {
