@@ -3,8 +3,8 @@
 // io.sockets.emit('Saves', saves); // Emit to all clients
 
 // Express
-var ip = process.env.OPENSHIFT_NODEJS_IP; // http://54.174.11.214/ (Public IP)
-var port = process.env.OPENSHIFT_NODEJS_PORT;
+var ip = '54.174.11.214' // Public IP
+var port = 8080;
 
 var express = require('express');
 var app = express();
