@@ -32,14 +32,14 @@ var currentSystems = {};
 io.sockets.on('connection', newConnection);
 function newConnection(socket) {
 	// Connect
-	console.log('Client connected: ' + socket.id); // Server Message
 	connections++;
+	console.log('Client connected: ' + socket.id); // Server Message
 	console.log('Connections: ' + connections);
 
 	// Disconnect
 	socket.on('disconnect', function() {
-		console.log('Client disconnected: ' + socket.id); // Server Message
 		connections--;
+		console.log('Client disconnected: ' + socket.id); // Server Message
 		console.log('Connections: ' + connections);
 
 		delete ships[socket.id];
