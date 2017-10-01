@@ -62,6 +62,8 @@ Game:
 				Recalibratable probabilities (for a price)
 				Wiggle movement with noise
 				Some animation when mined ore
+			Cargo Hauler
+				Transfer cargo between stations
 
 Bugs: 
 
