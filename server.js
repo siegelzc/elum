@@ -57,6 +57,7 @@ function newConnection(socket) {
 	});
 
 	// Saves
+	console.log('Saves: ', saves);
 	if (saves.length != 0) {
 		socket.emit('Saves', saves);
 		socket.emit('Territory', territory);
