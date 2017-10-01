@@ -1,6 +1,6 @@
 var socket;
 
-const devMode = true;
+const devMode = false;
 const quality = 'low'; // 'high' or 'low'
 
 const G = .0000000000667408;
