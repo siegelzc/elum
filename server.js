@@ -49,6 +49,7 @@ function newConnection(socket) {
 	socket.on('GalaxyLoaded', function() {
 		if (saves.length == 0) {
 			socket.emit('GalaxyLoaded', false);
+			console.log('Sent: GalaxyLoaded, false');
 		} else {
 			socket.emit('GalaxyLoaded', true);
 			socket.emit('Saves', saves);
