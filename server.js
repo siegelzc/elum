@@ -3,14 +3,11 @@
 // io.sockets.emit('Saves', saves); // Emit to all clients
 
 // Express
-var ip = '54.174.11.214' // Public IP
-var port = 8080;
+var port = 8080; // Public IP: 54.174.11.214
 
 var express = require('express');
 var app = express();
-var server = app.listen(ip, port, function() {
-	console.log("Listening on " + ip + ":" + port);
-});
+var server = app.listen(port);
 
 // Socket.io
 var socketio = require('socket.io');
