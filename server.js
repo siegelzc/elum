@@ -57,12 +57,12 @@ function newConnection(socket) {
 	});
 
 	// Saves
-	console.log('Saves: ', saves);
 	if (saves.length != 0) {
 		socket.emit('Saves', saves);
 		socket.emit('Territory', territory);
 	}
 	socket.on('Saves', function(saveS) {
+		console.log('Saves: ', saves);
 		if (saves.length == 0) {
 			console.log('                                                   Galaxy recieved');
 			for (i = 0; i < saveS.length; i++) {
