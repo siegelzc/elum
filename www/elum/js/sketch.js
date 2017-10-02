@@ -113,7 +113,7 @@ function setup(neW) {
 	if (neW != false) {
 		// Sockets
 		// socket = io.connect('localhost'); // Local
-		socket = io.connect('http://node-elum.1d35.starter-us-east-1.openshiftapps.com'); // Openshift
+		socket = io('http://node-elum.1d35.starter-us-east-1.openshiftapps.com'); // Openshift
 		socket.emit('GalaxyLoaded');
 		socket.on('GalaxyLoaded', function(loadeD) {
 			if (loadeD == false) {
