@@ -66,35 +66,21 @@ function newConnection(socket) {
 		console.log('Import: ', saveS);
 		if (saves.length == 0) {
 			console.log('                                                   Galaxy recieved');
+			saves = [];
 			for (i = 0; i < saveS.length; i++) {
-				saves[i] = {
-					system: JSON.parse(JSON.stringify(saveS[i].system)), 
-					orbits: JSON.parse(JSON.stringify(saveS[i].orbits)), 
-					star: JSON.parse(JSON.stringify(saveS[i].star)), 
-					ship: JSON.parse(JSON.stringify(saveS[i].ship)), 
-					asteroidBelt: JSON.parse(JSON.stringify(saveS[i].asteroidBelt)), 
-					warpGates: JSON.parse(JSON.stringify(saveS[i].warpGates)), 
-					stations: JSON.parse(JSON.stringify(saveS[i].stations)), 
-					beacons: JSON.parse(JSON.stringify(saveS[i].beacons)), 
-					barges: JSON.parse(JSON.stringify(saveS[i].barges)), 
-					military: JSON.parse(JSON.stringify(saveS[i].military)), 
-					cargoHold: JSON.parse(JSON.stringify(saveS[i].cargoHold)), 
-					pan: JSON.parse(JSON.stringify(saveS[i].pan)), 
-					planets: {
-						colors: saveS[i].planets.colors, 
-						types: saveS[i].planets.types, 
-						x: saveS[i].planets.x, 
-						y: saveS[i].planets.y, 
-						diameter: saveS[i].planets.diameter, 
-						radius: saveS[i].planets.radius, 
-						color: saveS[i].planets.color, 
-						radian: saveS[i].planets.radian, 
-						loaded: saveS[i].planets.loaded, 
-						type: saveS[i].planets.type, 
-						arrays: [], 
-						name: saveS[i].planets.name
-					}
-				};
+				saves[i].system = JSON.parse(JSON.stringify(saveS[i].system));
+				saves[i].orbits = JSON.parse(JSON.stringify(saveS[i].orbits));
+				saves[i].star = JSON.parse(JSON.stringify(saveS[i].star));
+				saves[i].ship = JSON.parse(JSON.stringify(saveS[i].ship));
+				saves[i].asteroidBelt = JSON.parse(JSON.stringify(saveS[i].asteroidBelt));
+				saves[i].warpGates = JSON.parse(JSON.stringify(saveS[i].warpGates));
+				saves[i].stations = JSON.parse(JSON.stringify(saveS[i].stations));
+				saves[i].beacons = JSON.parse(JSON.stringify(saveS[i].beacons));
+				saves[i].barges = JSON.parse(JSON.stringify(saveS[i].barges));
+				saves[i].military = JSON.parse(JSON.stringify(saveS[i].military));
+				saves[i].cargoHold = JSON.parse(JSON.stringify(saveS[i].cargoHold));
+				saves[i].pan = JSON.parse(JSON.stringify(saveS[i].pan));
+				saves[i].planets = JSON.parse(JSON.stringify(saveS[i].pan));
 				territory[saves[i].system.name] = null;
 			}
 			socket.emit('Territory', territory);
